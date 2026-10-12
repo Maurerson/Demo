@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Entwurf – Coiffeur Valentina Rebstein</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300..500&display=swap" rel="stylesheet">
+<style>
+  /* Farben: Puder (Hintergrund), Pflaume (Text), Rosé (Akzent) */
+  :root {
+    --puder: #F4EEF1;
+    --weiss: #FFFFFF;
+    --pflaume: #3E1F35;
+    --rose: #C77D98;
+    --rose-hell: #EBD3DC;
+    --grau: #6E5C67;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--puder); color: var(--pflaume);
+    font-family: "Jost", system-ui, sans-serif; font-weight: 300;
+    font-size: 1.0625rem; line-height: 1.65;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  .entwurf { background: var(--pflaume); color: var(--puder); font-size: .85rem; text-align: center; padding: 8px 16px; }
+
+  /* Hero: der Name als Bild */
+  .hero { text-align: center; padding: 88px 0 72px; }
+  .hero .ort { color: var(--grau); letter-spacing: .02em; margin: 0 0 8px; }
+  .hero h1 {
+    font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 500;
+    font-size: clamp(4rem, 15vw, 10rem); line-height: .9; margin: 0;
+    letter-spacing: -.02em;
+  }
+  .schnitt { display: block; width: min(360px, 70%); height: 2px; margin: 28px auto; background: linear-gradient(90deg, transparent, var(--rose) 20%, var(--rose) 80%, transparent); }
+  .hero .satz { font-size: 1.25rem; max-width: 26em; margin: 0 auto 32px; }
+  .sterne { color: var(--rose); letter-spacing: .15em; }
+  .bewertung { margin: 0 0 36px; color: var(--grau); }
+  .knopf {
+    display: inline-block; padding: 15px 30px; border-radius: 999px;
+    background: var(--pflaume); color: var(--puder); text-decoration: none; font-weight: 400;
+    margin: 0 6px 10px;
+  }
+  .knopf.leer { background: transparent; color: var(--pflaume); border: 1px solid var(--pflaume); }
+  .knopf:hover { background: var(--rose); color: var(--weiss); border-color: var(--rose); }
+
+  section { padding: 72px 0; }
+  h2 { font-family: "Bodoni Moda", serif; font-weight: 500; font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 12px; line-height: 1.1; }
+  .mitte { text-align: center; }
+  .weiss { background: var(--weiss); }
+
+  /* Über mich */
+  .ueber { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
+  .portrait { aspect-ratio: 4 / 5; border-radius: 200px 200px 8px 8px; background: var(--rose-hell); display: grid; place-items: center; color: var(--grau); font-size: .9rem; text-align: center; padding: 24px; }
+
+  /* Preise */
+  .preise { max-width: 620px; margin: 40px auto 0; }
+  .preis { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; }
+  .preis span:first-child { white-space: nowrap; }
+  .preis .linie { flex: 1; border-bottom: 1px dotted var(--rose); transform: translateY(-4px); }
+  .preis .betrag { font-family: "Bodoni Moda", serif; font-size: 1.15rem; white-space: nowrap; }
+  .hinweis { color: var(--grau); font-size: .9rem; text-align: center; margin-top: 24px; }
+
+  /* Besuch */
+  .besuch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; margin-top: 40px; }
+  .besuch h3 { font-family: "Bodoni Moda", serif; font-style: italic; font-weight: 500; font-size: 1.4rem; margin: 0 0 8px; }
+  .besuch p { margin: 0; }
+
+  footer { padding: 32px 0 48px; text-align: center; font-size: .85rem; color: var(--grau); }
+
+  @media (max-width: 760px) {
+    .ueber { grid-template-columns: 1fr; }
+    .portrait { max-width: 320px; margin: 0 auto; }
+    .besuch { grid-template-columns: 1fr; }
+    .preis span:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="entwurf" role="note">Entwurf von Tobias – kein offizieller Auftritt von Coiffeur Valentina. Nur zur Ansicht.</div>
+
+<main>
+  <section class="hero" aria-labelledby="titel">
+    <div class="wrap">
+      <p class="ort">Coiffeur in Rebstein</p>
+      <h1 id="titel">Valentina</h1>
+      <span class="schnitt" aria-hidden="true"></span>
+      <p class="satz">Ein Schnitt, der zu Ihnen passt – mit Zeit für Beratung und Ihre Wünsche.</p>
+      <p class="bewertung"><span class="sterne" aria-hidden="true">★★★★★</span><br>5,0 von 5 Sternen aus 38 Google-Bewertungen</p>
+      <a class="knopf" href="tel:+41765400261">Termin vereinbaren</a>
+      <a class="knopf leer" href="https://wa.me/41765400261">Per WhatsApp schreiben</a>
+    </div>
+  </section>
+
+  <section class="weiss" aria-labelledby="ueber-titel">
+    <div class="wrap ueber">
+      <div class="portrait">Platz für ein Foto von Valentina oder vom Salon</div>
+      <div>
+        <h2 id="ueber-titel">Willkommen im Salon</h2>
+        <p>[Hier stellt sich Valentina in zwei, drei Sätzen vor: seit wann sie Coiffeuse ist, was sie besonders gern macht und was Kundinnen und Kunden bei ihr erwartet.]</p>
+        <p>Viele Kundinnen kommen wegen der persönlichen Beratung und der fairen Preise – manche sogar von weit her.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="preise-titel">
+    <div class="wrap">
+      <h2 id="preise-titel" class="mitte">Angebot und Preise</h2>
+      <div class="preise">
+        <div class="preis"><span>Damen: Waschen, Schneiden, Föhnen</span><span class="linie"></span><span class="betrag">ab CHF __</span></div>
+        <div class="preis"><span>Herren: Schneiden</span><span class="linie"></span><span class="betrag">ab CHF __</span></div>
+        <div class="preis"><span>Kinder</span><span class="linie"></span><span class="betrag">ab CHF __</span></div>
+        <div class="preis"><span>Farbe und Strähnen</span><span class="linie"></span><span class="betrag">ab CHF __</span></div>
+        <div class="preis"><span>Locken- und Typberatung</span><span class="linie"></span><span class="betrag">ab CHF __</span></div>
+      </div>
+      <p class="hinweis">Platzhalter – Angebot und Preise trägt Valentina selbst ein.</p>
+    </div>
+  </section>
+
+  <section class="weiss" aria-labelledby="besuch-titel">
+    <div class="wrap">
+      <h2 id="besuch-titel" class="mitte">So finden Sie mich</h2>
+      <div class="besuch">
+        <div><h3>Adresse</h3><p>Marbacherstrasse 12<br>9445 Rebstein</p><p><a href="https://maps.google.com/?q=Marbacherstrasse+12,+9445+Rebstein">Route planen</a></p></div>
+        <div><h3>Termine</h3><p><a href="tel:+41765400261">076 540 02 61</a><br>Anruf oder WhatsApp</p></div>
+        <div><h3>Öffnungszeiten</h3><p>[Öffnungszeiten eintragen]</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Entwurf erstellt von Tobias als Vorschlag. Angaben aus dem öffentlichen Google-Eintrag; Texte in [Klammern] und Preise sind Platzhalter.</footer>
+</body>
+</html>

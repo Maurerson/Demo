@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Entwurf – Gächter Holzbau Rüthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  /* Farben: Weisstanne (Hintergrund), Tannengrün (dunkel), Harz (Akzent) */
+  :root {
+    --tanne: #F6F7F4;
+    --stein: #E4E8E3;
+    --gruen: #1F3A2E;
+    --gruen-hell: #2E5443;
+    --harz: #C98F2B;
+    --tinte: #1A201D;
+    --grau: #59635D;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--tanne);
+    color: var(--tinte);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--harz); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  /* Entwurfs-Hinweis */
+  .entwurf {
+    background: var(--harz);
+    color: var(--tinte);
+    font-size: .875rem;
+    text-align: center;
+    padding: 8px 16px;
+    position: sticky; top: 0; z-index: 10;
+  }
+
+  /* Kopf */
+  header .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 20px; padding-bottom: 20px; gap: 16px;
+  }
+  .marke { font-stretch: 75%; font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: -.01em; }
+  .marke span { font-weight: 400; color: var(--grau); }
+  nav { display: flex; gap: 22px; font-size: .95rem; }
+  nav a { text-decoration: none; color: var(--grau); }
+  nav a:hover { color: var(--tinte); }
+
+  /* Hero mit Jahresringen */
+  .hero { background: var(--gruen); color: var(--tanne); overflow: hidden; }
+  .hero .wrap {
+    display: grid; grid-template-columns: 1.15fr .85fr; align-items: center;
+    gap: 32px; padding-top: 72px; padding-bottom: 72px;
+  }
+  .hero h1 {
+    font-stretch: 62%; font-weight: 800;
+    font-size: clamp(3rem, 8.5vw, 6.5rem);
+    line-height: .92; letter-spacing: -.02em; margin: 0 0 24px;
+  }
+  .hero p { max-width: 32em; font-size: 1.15rem; color: #D5DED8; margin: 0 0 32px; }
+  .knopf {
+    display: inline-block; padding: 14px 22px; border-radius: 4px;
+    font-weight: 700; text-decoration: none; margin: 0 10px 10px 0;
+  }
+  .knopf.voll { background: var(--harz); color: var(--tinte); }
+  .knopf.leer { border: 2px solid #8FA79A; color: var(--tanne); }
+  .knopf:hover { filter: brightness(1.08); }
+  .ringe { width: 100%; max-width: 420px; justify-self: end; }
+  .ringe-legende { font-size: .85rem; color: #9DB3A7; text-align: right; margin-top: 8px; }
+
+  /* Abschnitte */
+  section { padding: 88px 0; }
+  h2 {
+    font-stretch: 75%; font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05;
+    margin: 0 0 16px; letter-spacing: -.01em;
+  }
+  .einleitung { max-width: 38em; color: var(--grau); margin: 0 0 48px; }
+
+  /* Leistungen */
+  .leistungen { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 56px; }
+  .leistung { padding: 24px 0; border-top: 2px solid var(--stein); }
+  .leistung h3 { font-size: 1.25rem; margin: 0 0 6px; font-weight: 700; }
+  .leistung p { margin: 0; color: var(--grau); max-width: 30em; }
+  .leistung.haupt h3 { color: var(--gruen-hell); }
+
+  /* Ausstellung / Foto-Platzhalter */
+  .ausstellung { background: var(--stein); }
+  .ausstellung .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .foto {
+    aspect-ratio: 4 / 3; border-radius: 4px;
+    background: repeating-linear-gradient(90deg, #d3d9d3 0 2px, #dde2dc 2px 14px);
+    display: grid; place-items: center; color: var(--grau); font-size: .9rem; text-align: center; padding: 16px;
+  }
+
+  /* Geschichte */
+  .zeitstrahl { list-style: none; padding: 0; margin: 0; border-left: 3px solid var(--harz); }
+  .zeitstrahl li { display: grid; grid-template-columns: 88px 1fr; gap: 16px; padding: 10px 0 10px 24px; }
+  .zeitstrahl b { font-stretch: 75%; font-size: 1.35rem; color: var(--gruen); }
+
+  /* Team */
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 40px; }
+  .person h3 { margin: 0; font-size: 1.1rem; }
+  .person p { margin: 2px 0 0; color: var(--grau); font-size: .95rem; }
+
+  /* Kontakt */
+  .kontakt { background: var(--gruen); color: var(--tanne); }
+  .kontakt .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+  .kontakt .einleitung { color: #C7D3CC; }
+  .kontakt dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 24px; }
+  .kontakt dt { color: #9DB3A7; }
+  .kontakt dd { margin: 0; }
+  .gross { font-stretch: 75%; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); text-decoration: none; display: block; margin-bottom: 8px; }
+
+  footer { padding: 32px 0; font-size: .875rem; color: var(--grau); }
+
+  @media (max-width: 820px) {
+    nav { display: none; }
+    .hero .wrap, .ausstellung .wrap, .kontakt .wrap { grid-template-columns: 1fr; }
+    .ringe { justify-self: start; max-width: 300px; }
+    .ringe-legende { text-align: left; }
+    .leistungen { grid-template-columns: 1fr; }
+    .team { grid-template-columns: 1fr 1fr; }
+    section { padding: 64px 0; }
+  }
+  @media (max-width: 480px) { .team { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ringe circle { animation: none !important; opacity: 1 !important; } }
+  @keyframes wachsen { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="entwurf" role="note">Entwurf von Tobias – kein offizieller Auftritt der Gächter &amp; Co. AG. Nur zur Ansicht.</div>
+
+<header>
+  <div class="wrap">
+    <a class="marke" href="#start">Gächter <span>Holzbau · Rüthi</span></a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ausstellung">Ausstellung</a>
+      <a href="#geschichte">Geschichte</a>
+      <a href="#team">Team</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+  <section class="hero" aria-labelledby="titel">
+    <div class="wrap">
+      <div>
+        <h1 id="titel">Ihr Holzhaus aus Rüthi. Seit 1964.</h1>
+        <p>Vom ersten Entwurf bis zur fertigen Küche: Wir planen, bauen und schreinern in der eigenen Werkstatt – mit eidgenössisch diplomierten Zimmermeistern und Partnern aus der Region.</p>
+        <a class="knopf voll" href="tel:+41717677720">071 767 77 20 anrufen</a>
+        <a class="knopf leer" href="#kontakt">Beratung anfragen</a>
+      </div>
+      <div>
+        <svg class="ringe" id="ringe" viewBox="-110 -110 220 220" role="img" aria-labelledby="ringe-titel">
+          <title id="ringe-titel">Jahresringe: ein Ring für jedes Jahr seit 1964</title>
+        </svg>
+        <p class="ringe-legende">Ein Ring für jedes Jahr seit der Gründung.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen" aria-labelledby="leistungen-titel">
+    <div class="wrap">
+      <h2 id="leistungen-titel">Alles aus einer Hand</h2>
+      <p class="einleitung">Ein Ansprechpartner für Planung, Bau und Ausbau. Das spart Ihnen Abstimmung, Zeit und Überraschungen beim Budget.</p>
+      <div class="leistungen">
+        <div class="leistung haupt"><h3>Hausbau</h3><p>Holzhäuser schlüsselfertig, nach Minergie-Standard, auf Wunsch Minergie-P. Mit transparenten Preisen, Eigenleistungen inklusive.</p></div>
+        <div class="leistung haupt"><h3>Architektur</h3><p>Wohnraum-Entwürfe für Singles, Paare und Familien – passend zu Grundstück und Budget.</p></div>
+        <div class="leistung"><h3>Innenausbau</h3><p>Böden, Wände, Decken und Oberflächen wählen Sie mit uns gemeinsam aus.</p></div>
+        <div class="leistung"><h3>Küchenbau</h3><p>Massgefertigte Küchen, geplant für Ihren Alltag und viele Jahre Nutzung.</p></div>
+        <div class="leistung"><h3>Schreinerei</h3><p>Möbel nach Mass aus unserer eigenen Werkstatt.</p></div>
+        <div class="leistung"><h3>Energieberatung und Nachweise</h3><p>Energienachweise und optimierte Konstruktionen im Holz- und Elementbau.</p></div>
+        <div class="leistung"><h3>Schadenanalysen</h3><p>Gutachten im Holzbau – von der Aufnahme bis zur Sanierung.</p></div>
+        <div class="leistung"><h3>Planung und Projektleitung</h3><p>Wir koordinieren alle Beteiligten, damit Termine und Kosten halten.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ausstellung" class="ausstellung" aria-labelledby="ausstellung-titel">
+    <div class="wrap">
+      <div>
+        <h2 id="ausstellung-titel">Anschauen statt vorstellen</h2>
+        <p class="einleitung">In unserer Ausstellung in Rüthi sehen Sie Küchen, Böden und Oberflächen im Original – und in fertig ausgebauten Wohnungen, wie das Ganze zusammen wirkt.</p>
+        <a class="knopf voll" href="#kontakt">Besuch vereinbaren</a>
+      </div>
+      <div class="foto">Platz für ein eigenes Foto der Ausstellung</div>
+    </div>
+  </section>
+
+  <section id="geschichte" aria-labelledby="geschichte-titel">
+    <div class="wrap">
+      <h2 id="geschichte-titel">Drei Generationen Holzbau</h2>
+      <p class="einleitung">Aus der Zimmerei von Paul Gächter ist ein Betrieb gewachsen, der heute vom Plan bis zur Möbelkante alles selbst macht.</p>
+      <ol class="zeitstrahl">
+        <li><b>1964</b><span>Paul Gächter gründet die Zimmerei und Schreinerei in Rüthi.</span></li>
+        <li><b>1985</b><span>Erwin Gächter übernimmt den Betrieb.</span></li>
+        <li><b>2007</b><span>Neue Werkhalle und neues Büro.</span></li>
+        <li><b>2013</b><span>Rolf Gächter übernimmt – aus dem Familienbetrieb wird die Gächter &amp; Co. AG.</span></li>
+        <li><b>2015</b><span>Neubau mit Bürogebäude, Werkhalle und Ausstellung.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="team" aria-labelledby="team-titel" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="team-titel">Ihre Ansprechpersonen</h2>
+      <p class="einleitung">Sie sprechen direkt mit den Leuten, die Ihr Projekt planen und leiten.</p>
+      <div class="team">
+        <div class="person"><h3>Rolf Gächter</h3><p>Inhaber und Geschäftsführer, eidg. dipl. Zimmermeister</p></div>
+        <div class="person"><h3>Hansruedi Schiesser</h3><p>Küchenplanung und Energieberatung, eidg. dipl. Zimmermeister</p></div>
+        <div class="person"><h3>Martin Schöb</h3><p>Projektleitung und Planung, eidg. dipl. Zimmerpolier</p></div>
+        <div class="person"><h3>Martin Husistein</h3><p>Projektleitung und Planung, Techniker HF</p></div>
+        <div class="person"><h3>Raphael Leuener</h3><p>Projektleitung und Planung</p></div>
+        <div class="person"><h3>Andrea Gächter</h3><p>Administration und Buchhaltung</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="kontakt" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+      <div>
+        <h2 id="kontakt-titel">Erzählen Sie uns von Ihrem Projekt</h2>
+        <p class="einleitung">Ein erstes Gespräch ist unverbindlich. Rufen Sie an oder schreiben Sie uns, wir melden uns.</p>
+        <a class="gross" href="tel:+41717677720">071 767 77 20</a>
+        <a class="gross" href="mailto:info@gaechter-hausbau.ch" style="font-size:1.4rem">info@gaechter-hausbau.ch</a>
+      </div>
+      <dl>
+        <dt>Adresse</dt><dd>Gächter &amp; Co. AG<br>Winkelstrasse 20<br>9464 Rüthi SG</dd>
+        <dt>Bürozeiten</dt><dd>Montag bis Freitag<br>7.30–17.00 Uhr</dd>
+        <dt>Anfahrt</dt><dd><a href="https://maps.google.com/?q=Winkelstrasse+20,+9464+R%C3%BCthi">In Google Maps öffnen</a></dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Entwurf erstellt von Tobias als Vorschlag. Inhalte aus der öffentlichen Webseite der Gächter &amp; Co. AG übernommen; Fotos werden durch eigene Bilder des Betriebs ersetzt.</div>
+</footer>
+
+<script>
+  // Zeichnet einen Ring pro Jahr seit 1964. Meilenstein-Jahre werden hervorgehoben.
+  (function () {
+    var svg = document.getElementById('ringe');
+    var start = 1964, jahr = new Date().getFullYear();
+    var meilensteine = [1964, 1985, 2007, 2013, 2015];
+    var ns = 'http://www.w3.org/2000/svg';
+    var anzahl = jahr - start + 1;
+    var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    for (var i = 0; i < anzahl; i++) {
+      var j = start + i;
+      var c = document.createElementNS(ns, 'circle');
+      // leicht unregelmässiger Abstand, wie echtes Holz
+      var r = 4 + i * (100 / anzahl) + Math.sin(i * 1.7) * 0.6;
+      var stark = meilensteine.indexOf(j) > -1;
+      c.setAttribute('r', r.toFixed(2));
+      c.setAttribute('cx', (Math.sin(i * 0.3) * 1.2).toFixed(2));
+      c.setAttribute('cy', (Math.cos(i * 0.25) * 1.2).toFixed(2));
+      c.setAttribute('fill', 'none');
+      c.setAttribute('stroke', stark ? '#C98F2B' : '#5E8270');
+      c.setAttribute('stroke-width', stark ? 2.2 : 0.7);
+      if (!ruhig) {
+        c.style.opacity = 0;
+        c.style.animation = 'wachsen .4s ease-out ' + (i * 0.025) + 's forwards';
+      }
+      svg.appendChild(c);
+    }
+  })();
+</script>
+</body>
+</html>
