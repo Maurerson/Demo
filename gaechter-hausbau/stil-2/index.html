@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Entwurf Stil 2 – Gächter Holzbau Rüthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  /* Stil 2 "Hell und modern": viel Weiss, grosse Bildflächen, Rheintal-Blau als Akzent */
+  :root {
+    --weiss: #FFFFFF;
+    --hell: #F1F3F4;
+    --beton: #DDE1E3;
+    --text: #22282C;
+    --grau: #5F696F;
+    --blau: #24435C;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--weiss); color: var(--text); font-family: "Hanken Grotesk", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; font-weight: 400; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--blau); outline-offset: 3px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .entwurf { background: var(--blau); color: var(--weiss); font-size: .85rem; text-align: center; padding: 8px 16px; }
+
+  header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
+  .marke { font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+  .marke small { font-weight: 300; color: var(--grau); font-size: 1rem; margin-left: 6px; }
+  .anruf { text-decoration: none; font-weight: 600; color: var(--blau); }
+
+  /* Hero: Text links, grosses Bild rechts bis zum Rand */
+  .hero { display: grid; grid-template-columns: 1fr 1.25fr; min-height: 78vh; }
+  .hero-text { padding: 64px 48px 64px max(20px, calc((100vw - 1200px) / 2 + 20px)); display: flex; flex-direction: column; justify-content: center; }
+  .hero h1 { font-weight: 300; font-size: clamp(2.6rem, 5.5vw, 4.4rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 0 24px; }
+  .hero h1 strong { font-weight: 700; display: block; }
+  .hero p { color: var(--grau); max-width: 28em; margin: 0 0 32px; font-size: 1.15rem; }
+  .knopf { display: inline-block; padding: 15px 26px; background: var(--blau); color: var(--weiss); text-decoration: none; font-weight: 600; margin: 0 10px 10px 0; }
+  .knopf.leer { background: transparent; color: var(--blau); box-shadow: inset 0 0 0 1.5px var(--blau); }
+  .bild { background: linear-gradient(160deg, #cfd6da, #b9c3c9); display: grid; place-items: center; color: #4c575d; text-align: center; padding: 24px; font-size: .95rem; }
+
+  section { padding: 96px 0; }
+  h2 { font-weight: 300; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.02em; line-height: 1.1; margin: 0 0 16px; }
+  .einleitung { color: var(--grau); max-width: 36em; margin: 0 0 56px; }
+
+  /* Leistungen als Bildraster */
+  .raster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+  .kachel .bild { aspect-ratio: 4 / 3; margin-bottom: 16px; font-size: .85rem; }
+  .kachel h3 { margin: 0 0 4px; font-size: 1.2rem; font-weight: 600; }
+  .kachel p { margin: 0; color: var(--grau); }
+  .weitere { margin-top: 48px; color: var(--grau); }
+  .weitere b { color: var(--text); font-weight: 600; }
+
+  /* Ablauf: echte Reihenfolge */
+  .ablauf { background: var(--hell); }
+  .schritte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; counter-reset: schritt; }
+  .schritte li { counter-increment: schritt; border-top: 2px solid var(--blau); padding-top: 16px; }
+  .schritte li::before { content: counter(schritt); font-size: 2.4rem; font-weight: 300; color: var(--blau); display: block; line-height: 1; margin-bottom: 12px; }
+  .schritte h3 { margin: 0 0 6px; font-size: 1.1rem; }
+  .schritte p { margin: 0; color: var(--grau); }
+
+  /* Zahlen */
+  .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .zahlen b { display: block; font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 300; letter-spacing: -.03em; color: var(--blau); line-height: 1; }
+  .zahlen span { color: var(--grau); }
+
+  /* Kontakt */
+  .kontakt { background: var(--blau); color: var(--weiss); }
+  .kontakt .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+  .kontakt .einleitung { color: #C9D5DF; margin-bottom: 24px; }
+  .kontakt a.gross { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 300; text-decoration: none; display: block; }
+  .kontakt p { margin: 0 0 12px; }
+  .kontakt .knopf { background: var(--weiss); color: var(--blau); }
+
+  footer { padding: 28px 0; font-size: .85rem; color: var(--grau); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-text { padding: 48px 20px; }
+    .hero .bild { aspect-ratio: 16 / 10; }
+    .raster { grid-template-columns: 1fr 1fr; }
+    .schritte { grid-template-columns: 1fr 1fr; }
+    .kontakt .wrap { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+  }
+  @media (max-width: 520px) { .raster, .schritte, .zahlen { grid-template-columns: 1fr; } .anruf { display: none; } }
+</style>
+</head>
+<body>
+<div class="entwurf" role="note">Entwurf von Tobias, Stil 2 von 3 – kein offizieller Auftritt der Gächter &amp; Co. AG.</div>
+
+<header>
+  <div class="wrap">
+    <a class="marke" href="#">Gächter<small>Holzbau Rüthi</small></a>
+    <a class="anruf" href="tel:+41717677720">071 767 77 20</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding:0" aria-labelledby="titel">
+    <div class="hero-text">
+      <h1 id="titel">Wohnen in Holz.<strong>Geplant und gebaut in Rüthi.</strong></h1>
+      <p>Holzhäuser nach Minergie-Standard, Innenausbau, Küchen und Möbel – alles aus einer Hand, seit 1964.</p>
+      <div>
+        <a class="knopf" href="#kontakt">Erstgespräch vereinbaren</a>
+        <a class="knopf leer" href="#leistungen">Leistungen ansehen</a>
+      </div>
+    </div>
+    <div class="bild">Platz für ein grosses Foto eines fertigen Holzhauses</div>
+  </section>
+
+  <section id="leistungen" aria-labelledby="leistungen-titel">
+    <div class="wrap">
+      <h2 id="leistungen-titel">Was wir für Sie bauen</h2>
+      <p class="einleitung">Sie haben einen Ansprechpartner für das ganze Projekt – von der ersten Skizze bis zur letzten Schublade.</p>
+      <div class="raster">
+        <div class="kachel"><div class="bild">Foto Hausbau</div><h3>Hausbau</h3><p>Schlüsselfertige Holzhäuser, Minergie oder Minergie-P.</p></div>
+        <div class="kachel"><div class="bild">Foto Innenausbau</div><h3>Innenausbau</h3><p>Böden, Wände und Decken, gemeinsam mit Ihnen ausgewählt.</p></div>
+        <div class="kachel"><div class="bild">Foto Küche</div><h3>Küchenbau</h3><p>Massgefertigte Küchen für Ihren Alltag.</p></div>
+        <div class="kachel"><div class="bild">Foto Möbel</div><h3>Schreinerei</h3><p>Möbel nach Mass aus der eigenen Werkstatt.</p></div>
+        <div class="kachel"><div class="bild">Foto Planung</div><h3>Architektur</h3><p>Wohnraum-Entwürfe für Singles, Paare und Familien.</p></div>
+        <div class="kachel"><div class="bild">Foto Ausstellung</div><h3>Ausstellung</h3><p>Küchen und Oberflächen in Rüthi im Original ansehen.</p></div>
+      </div>
+      <p class="weitere"><b>Ausserdem:</b> Energieberatung und Nachweise, Schadenanalysen im Holzbau, Planung und Projektleitung.</p>
+    </div>
+  </section>
+
+  <section class="ablauf" aria-labelledby="ablauf-titel">
+    <div class="wrap">
+      <h2 id="ablauf-titel">So entsteht Ihr Haus</h2>
+      <p class="einleitung">Klare Schritte, ein fester Ansprechpartner und ein Budget, das hält.</p>
+      <ol class="schritte">
+        <li><h3>Gespräch</h3><p>Wir hören zu: Wünsche, Grundstück, Budget.</p></li>
+        <li><h3>Planung</h3><p>Entwurf, Energienachweis und transparente Offerte – Eigenleistungen inklusive.</p></li>
+        <li><h3>Bau</h3><p>Abbund in der eigenen Halle, Montage mit regionalen Partnern.</p></li>
+        <li><h3>Ausbau</h3><p>Böden, Küche und Möbel aus der eigenen Schreinerei.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-label="Gächter in Zahlen">
+    <div class="wrap zahlen">
+      <div><b>1964</b><span>gegründet von Paul Gächter</span></div>
+      <div><b>62</b><span>Jahre Erfahrung im Holzbau</span></div>
+      <div><b>6</b><span>Fachleute als direkte Ansprechpersonen</span></div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="kontakt" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+      <div>
+        <h2 id="kontakt-titel">Lassen Sie uns über Ihr Projekt reden</h2>
+        <p class="einleitung">Das erste Gespräch ist unverbindlich.</p>
+        <a class="gross" href="tel:+41717677720">071 767 77 20</a>
+        <a class="gross" href="mailto:info@gaechter-hausbau.ch" style="font-size:1.3rem">info@gaechter-hausbau.ch</a>
+      </div>
+      <div>
+        <p>Gächter &amp; Co. AG<br>Winkelstrasse 20, 9464 Rüthi SG</p>
+        <p>Montag bis Freitag, 7.30–17.00 Uhr</p>
+        <a class="knopf" href="https://maps.google.com/?q=Winkelstrasse+20,+9464+R%C3%BCthi">Route planen</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Entwurf von Tobias als Vorschlag. Inhalte aus der öffentlichen Webseite der Gächter &amp; Co. AG; Fotos werden durch eigene Bilder ersetzt.</div></footer>
+</body>
+</html>
