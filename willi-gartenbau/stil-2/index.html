@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Entwurf Stil 2 – Willi Gartenbau Altstätten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  /* Stil 2 "Hell und grün": viel Weiss, grosse Bildflächen, Blattgrün als Akzent */
+  :root {
+    --weiss: #FFFFFF;
+    --hell: #F1F4EE;
+    --text: #1F2620;
+    --grau: #5E675F;
+    --gruen: #2F6B3A;
+    --gruen-hell: #DCE8D6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--weiss); color: var(--text); font-family: "Hanken Grotesk", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gruen); outline-offset: 3px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .entwurf { background: var(--gruen); color: var(--weiss); font-size: .85rem; text-align: center; padding: 8px 16px; }
+
+  header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
+  .marke { font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+  .marke small { font-weight: 300; color: var(--grau); font-size: 1rem; margin-left: 6px; }
+  .anruf { text-decoration: none; font-weight: 600; color: var(--gruen); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.25fr; min-height: 78vh; }
+  .hero-text { padding: 64px 48px 64px max(20px, calc((100vw - 1200px) / 2 + 20px)); display: flex; flex-direction: column; justify-content: center; }
+  .hero h1 { font-weight: 300; font-size: clamp(2.6rem, 5.5vw, 4.4rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 0 24px; }
+  .hero h1 strong { font-weight: 700; display: block; color: var(--gruen); }
+  .hero p { color: var(--grau); max-width: 28em; margin: 0 0 32px; font-size: 1.15rem; }
+  .knopf { display: inline-block; padding: 15px 26px; background: var(--gruen); color: var(--weiss); text-decoration: none; font-weight: 600; margin: 0 10px 10px 0; border-radius: 999px; }
+  .knopf.leer { background: transparent; color: var(--gruen); box-shadow: inset 0 0 0 1.5px var(--gruen); }
+  .bild { background: linear-gradient(160deg, #CFE0C8, #A9C3A0); display: grid; place-items: center; color: #3F5A3F; text-align: center; padding: 24px; font-size: .95rem; }
+
+  section { padding: 96px 0; }
+  h2 { font-weight: 300; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.02em; line-height: 1.1; margin: 0 0 16px; }
+  .einleitung { color: var(--grau); max-width: 36em; margin: 0 0 56px; }
+
+  .raster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+  .kachel .bild { aspect-ratio: 4 / 3; margin-bottom: 16px; font-size: .85rem; border-radius: 6px; }
+  .kachel h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
+  .kachel p { margin: 0; color: var(--grau); font-size: .98rem; }
+
+  .ablauf { background: var(--hell); }
+  .schritte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; counter-reset: schritt; }
+  .schritte li { counter-increment: schritt; border-top: 2px solid var(--gruen); padding-top: 16px; }
+  .schritte li::before { content: counter(schritt); font-size: 2.4rem; font-weight: 300; color: var(--gruen); display: block; line-height: 1; margin-bottom: 12px; }
+  .schritte h3 { margin: 0 0 6px; font-size: 1.1rem; }
+  .schritte p { margin: 0; color: var(--grau); }
+
+  .refs { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 24px; }
+  .refs .gross-ref { grid-row: span 2; }
+  .ref .bild { border-radius: 6px; margin-bottom: 14px; aspect-ratio: 16 / 10; }
+  .refs .gross-ref .bild { aspect-ratio: auto; height: calc(100% - 90px); min-height: 280px; }
+  .ref h3 { margin: 0 0 4px; font-size: 1.15rem; }
+  .ref p { margin: 0; color: var(--grau); }
+
+  .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .zahlen b { display: block; font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 300; letter-spacing: -.03em; color: var(--gruen); line-height: 1; }
+  .zahlen span { color: var(--grau); }
+
+  .kontakt { background: var(--gruen); color: var(--weiss); }
+  .kontakt .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; }
+  .kontakt .einleitung { color: #CFE0C8; margin-bottom: 24px; }
+  .kontakt a.gross { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 300; text-decoration: none; display: block; }
+  .kontakt p { margin: 0 0 12px; }
+  .kontakt .knopf { background: var(--weiss); color: var(--gruen); }
+
+  footer { padding: 28px 0; font-size: .85rem; color: var(--grau); }
+
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-text { padding: 48px 20px; }
+    .hero .bild { aspect-ratio: 16 / 10; }
+    .raster, .schritte { grid-template-columns: 1fr 1fr; }
+    .refs { grid-template-columns: 1fr; }
+    .refs .gross-ref { grid-row: auto; }
+    .refs .gross-ref .bild { height: auto; min-height: 0; aspect-ratio: 16 / 10; }
+    .kontakt .wrap { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+  }
+  @media (max-width: 520px) { .raster, .schritte, .zahlen { grid-template-columns: 1fr; } .anruf { display: none; } }
+</style>
+</head>
+<body>
+<div class="entwurf" role="note">Entwurf von Tobias, Stil 2 von 3 – kein offizieller Auftritt der Willi Gartenbau GmbH.</div>
+
+<header>
+  <div class="wrap">
+    <a class="marke" href="#">Willi Gartenbau<small>Altstätten</small></a>
+    <a class="anruf" href="tel:+41792366310">079 236 63 10</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding:0" aria-labelledby="titel">
+    <div class="hero-text">
+      <h1 id="titel">Ihr Garten.<strong>Ihr Wohlfühlplatz.</strong></h1>
+      <p>Wir gestalten, bauen und pflegen Gärten im St. Galler Rheintal – mit Erfahrung seit 1985 und eigenen Maschinen für jede Aufgabe.</p>
+      <div>
+        <a class="knopf" href="#kontakt">Unverbindliche Beratung</a>
+        <a class="knopf leer" href="#leistungen">Leistungen ansehen</a>
+      </div>
+    </div>
+    <div class="bild">Platz für ein grosses Foto eines fertigen Gartens</div>
+  </section>
+
+  <section id="leistungen" aria-labelledby="leistungen-titel">
+    <div class="wrap">
+      <h2 id="leistungen-titel">Was wir für Sie machen</h2>
+      <p class="einleitung">Ein Ansprechpartner für den ganzen Garten – vom ersten Gespräch bis zum jährlichen Heckenschnitt.</p>
+      <div class="raster">
+        <div class="kachel"><div class="bild">Foto Gartengestaltung</div><h3>Gartengestaltung</h3><p>Neue Gärten und Wohlfühlplätze, auch in kleinen Schritten.</p></div>
+        <div class="kachel"><div class="bild">Foto Naturstein</div><h3>Natursteinarbeiten</h3><p>Mauern und Plätze aus Granit bis Sandstein.</p></div>
+        <div class="kachel"><div class="bild">Foto Vorplatz</div><h3>Vorplätze und Wege</h3><p>Parkplatz, Sitzplatz oder Gehweg – neu oder erneuert.</p></div>
+        <div class="kachel"><div class="bild">Foto Bepflanzung</div><h3>Bepflanzungen</h3><p>Bäume, Sträucher und Bodendecker, die zu Ihrem Garten passen.</p></div>
+        <div class="kachel"><div class="bild">Foto Unterhalt</div><h3>Unterhalt</h3><p>Hecken, Formschnitt, Rasenpflege und Baumfällen.</p></div>
+        <div class="kachel"><div class="bild">Foto Umänderung</div><h3>Umänderungen</h3><p>Bestehende Gärten mit wenig Aufwand neu wirken lassen.</p></div>
+        <div class="kachel"><div class="bild">Foto Bagger</div><h3>Baggerarbeiten</h3><p>Aushub, Leitungsbau und Erdarbeiten mit 1,5–8,5 t.</p></div>
+        <div class="kachel"><div class="bild">Foto Maschinen</div><h3>Maschinenpark</h3><p>Bagger, Dumper, LKW und Kleingeräte im eigenen Betrieb.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ablauf" aria-labelledby="ablauf-titel">
+    <div class="wrap">
+      <h2 id="ablauf-titel">So entsteht Ihr neuer Garten</h2>
+      <p class="einleitung">Klare Schritte und ein fester Ansprechpartner.</p>
+      <ol class="schritte">
+        <li><h3>Beratung</h3><p>Wir schauen uns Ihren Garten an und hören zu.</p></li>
+        <li><h3>Offerte</h3><p>Unverbindlich und verständlich, mit Steinen und Pflanzen zur Auswahl.</p></li>
+        <li><h3>Ausführung</h3><p>Mit eigenen Leuten und Maschinen – schnell, sicher und sauber.</p></li>
+        <li><h3>Pflege</h3><p>Auf Wunsch kümmern wir uns auch danach um Hecke und Rasen.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="ref-titel">
+    <div class="wrap">
+      <h2 id="ref-titel">Gärten, die wir gebaut haben</h2>
+      <p class="einleitung">Drei Beispiele aus dem Rheintal.</p>
+      <div class="refs">
+        <div class="ref gross-ref"><div class="bild">Foto Projekt Vetsch</div><h3>Toskanischer Garten, Altstätten</h3><p>Komplette Neugestaltung mit Sitzplatz, Wegen, Mauer und Rollrasen.</p></div>
+        <div class="ref"><div class="bild">Foto Projekt Bichsel</div><h3>Sitzplatz mit Granitmosaik, Au</h3><p>Ein ruhiger Platz mit Sichtschutz und Gräsern.</p></div>
+        <div class="ref"><div class="bild">Foto Projekt Ribelhof</div><h3>Eingangsbereich, Ribelhof</h3><p>Sichtschutz aus Krustenplatten und eine Sandsteinmauer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0" aria-label="Willi Gartenbau in Zahlen">
+    <div class="wrap zahlen">
+      <div><b>1985</b><span>gegründet in Altstätten</span></div>
+      <div><b>41</b><span>Jahre Erfahrung im Gartenbau</span></div>
+      <div><b>1,5–8,5 t</b><span>eigene Bagger für jedes Grundstück</span></div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="kontakt" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+      <div>
+        <h2 id="kontakt-titel">Erzählen Sie uns von Ihrem Garten</h2>
+        <p class="einleitung">Beratung und Offerte sind unverbindlich.</p>
+        <a class="gross" href="tel:+41792366310">079 236 63 10</a>
+        <a class="gross" href="mailto:sandro@gartenbau-willi.ch" style="font-size:1.3rem">sandro@gartenbau-willi.ch</a>
+      </div>
+      <div>
+        <p>Willi Gartenbau GmbH, Sandro Willi<br>Oberrieterstrasse 30, 9450 Altstätten SG</p>
+        <a class="knopf" href="https://maps.google.com/?q=Oberrieterstrasse+30,+9450+Altst%C3%A4tten">Route planen</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Entwurf von Tobias als Vorschlag. Inhalte aus der öffentlichen Webseite der Willi Gartenbau GmbH; Fotos werden durch eigene Bilder ersetzt.</div></footer>
+</body>
+</html>
