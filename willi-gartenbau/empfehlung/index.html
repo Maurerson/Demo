@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Entwurf – Willi Gartenbau GmbH, Altstätten</title>
+<meta name="description" content="Gartenbau im Rheintal seit 1985: Planung, Natursteinarbeiten, Bepflanzung, Unterhalt und Baggerarbeiten aus Altstätten.">
+<meta name="theme-color" content="#F6F2E7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Empfehlung "Gartenplan" – Weiterentwicklung von Stil 3
+     Welt: Zeichenpapier, Tusche, Grüntöne, Ziegelrot als Planer-Stift.
+     Alles in einer Datei: Farben oben ändern, Rest passt sich an.
+     ============================================================ */
+  :root {
+    --papier: #F6F2E7;      /* Hintergrund */
+    --papier-2: #EDE7D6;    /* zweite Fläche */
+    --blatt: #FBF8F0;       /* Karten / Planblätter */
+    --raster: #E4DDC9;      /* Linien vom Zeichenpapier */
+    --tusche: #26332A;      /* Text, Linien */
+    --grau: #545B50;        /* Nebentext (Kontrast > 6:1 auf Papier) */
+    --gruen: #4A7340;       /* Akzent Grün */
+    --gruen-hell: #A9C49A;
+    --rasen: #DDE8D3;
+    --ziegel: #A4532F;      /* Planer-Stift: Markierungen, Fokus */
+    --linie: 1.5px solid var(--tusche);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-color: var(--tusche) var(--papier-2); }
+  body {
+    margin: 0; background: var(--papier); color: var(--tusche);
+    font-family: "Hanken Grotesk", system-ui, sans-serif;
+    font-size: 1.0625rem; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; caret-color: var(--ziegel);
+  }
+  ::selection { background: var(--gruen-hell); color: var(--tusche); }
+  a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
+  :focus-visible { outline: 2px solid var(--ziegel); outline-offset: 3px; }
+  h1, h2, h3, .marke, .zahl { font-family: "Zilla Slab", Georgia, serif; text-wrap: balance; }
+  h2 { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.01em; }
+  p { text-wrap: pretty; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+  .einleitung { color: var(--grau); max-width: 36em; margin: 0 0 44px; }
+
+  /* Entwurfs-Hinweis: bewusst klein, eine Zeile */
+  .entwurf { background: var(--tusche); color: var(--papier); font-size: .8rem; text-align: center; padding: 7px 16px; }
+
+  /* Kopfzeile */
+  header { border-bottom: var(--linie); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .marke { font-weight: 700; font-size: 1.35rem; text-decoration: none; line-height: 1.1; }
+  .marke small { display: block; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grau); margin-top: 3px; }
+  .anruf { font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--ziegel); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  /* Knöpfe */
+  .knopf { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; min-height: 48px; background: var(--tusche); color: var(--papier); text-decoration: none; font-weight: 700; transition: background-color .2s ease-out, color .2s ease-out; }
+  .knopf:hover { background: var(--gruen); }
+  .knopf.leer { background: transparent; color: var(--tusche); box-shadow: inset 0 0 0 1.5px var(--tusche); }
+  .knopf.leer:hover { background: var(--tusche); color: var(--papier); }
+  .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* ---------- Hero: Text links, Plan rechts (auf dem Handy Text zuerst) ---------- */
+  .hero {
+    background-image: linear-gradient(var(--raster) 1px, transparent 1px), linear-gradient(90deg, var(--raster) 1px, transparent 1px);
+    background-size: 24px 24px; border-bottom: var(--linie);
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+  .hero h1 { font-size: clamp(2.7rem, 6.2vw, 4.6rem); line-height: .98; margin: 0 0 22px; font-weight: 700; letter-spacing: -.015em; }
+  .hero h1 span { color: var(--gruen); display: block; }
+  .hero p { color: var(--grau); margin: 0 0 30px; max-width: 30em; font-size: 1.15rem; }
+  .hero .hinweis { margin: 18px 0 0; font-size: .95rem; color: var(--grau); }
+  .hero .hinweis a { font-weight: 700; color: var(--tusche); }
+
+  /* Der Gartenplan */
+  .plan-rahmen { background: var(--blatt); border: var(--linie); padding: 12px; box-shadow: 0 18px 40px -24px rgba(38,51,42,.45); }
+  .plan { width: 100%; height: auto; display: block; }
+  .plan .flaeche { transition: opacity .35s cubic-bezier(.16,1,.3,1), filter .35s cubic-bezier(.16,1,.3,1); }
+  .plan .marker { cursor: pointer; }
+  .plan .marker circle { transition: fill .25s ease-out; }
+  /* Wenn eine Leistung gewählt ist: alles andere tritt zurück */
+  .plan.fokus .flaeche:not(.aktiv) { opacity: .28; filter: saturate(.4); }
+  .plan .marker.aktiv circle { fill: var(--ziegel); }
+  .plan .marker.aktiv text { fill: var(--papier); }
+
+  /* ---------- Legende = Leistungen ---------- */
+  section { padding: 88px 0; }
+  .legende-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; list-style: none; margin: 0; padding: 0; }
+  .legende-raster li { border-top: 1px solid #CFC7B2; }
+  .legende-raster li:nth-last-child(-n+2) { border-bottom: 1px solid #CFC7B2; }
+  .eintrag { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 44px 1fr; gap: 14px; width: 100%; padding: 20px 8px 20px 0; cursor: pointer; }
+  .eintrag:focus-visible { outline: 2px solid var(--ziegel); outline-offset: 2px; }
+  .eintrag .nr { width: 36px; height: 36px; border: var(--linie); border-radius: 50%; display: grid; place-items: center; font-family: "Zilla Slab", serif; font-weight: 700; transition: background-color .25s ease-out, color .25s ease-out, border-color .25s ease-out; }
+  .eintrag h3 { margin: 2px 0 2px; font-size: 1.25rem; }
+  .eintrag p { margin: 0; color: var(--grau); font-size: .98rem; }
+  .eintrag:hover .nr, .eintrag.aktiv .nr { background: var(--ziegel); border-color: var(--ziegel); color: var(--papier); }
+  .legende-tipp { margin: 18px 0 0; font-size: .9rem; color: var(--grau); }
+
+  /* ---------- Ablauf: wie ein Massstabsbalken ---------- */
+  .ablauf { background: var(--papier-2); border-top: var(--linie); border-bottom: var(--linie); }
+  .schritte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border: var(--linie); background: var(--blatt); }
+  .schritte li { padding: 0 22px 24px; border-left: var(--linie); }
+  .schritte li:first-child { border-left: 0; }
+  .schritte li::before { content: ""; display: block; height: 10px; margin: 0 -22px 20px; border-bottom: var(--linie); }
+  .schritte li:nth-child(odd)::before { background: var(--tusche); }
+  .schritte h3 { margin: 0 0 6px; font-size: 1.2rem; }
+  .schritte p { margin: 0; color: var(--grau); font-size: .98rem; }
+  .schritte .wann { display: block; font-size: .85rem; font-weight: 700; color: var(--ziegel); margin-bottom: 6px; }
+
+  /* ---------- Geschichte ---------- */
+  .geschichte .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .geschichte p { color: var(--grau); margin: 0 0 14px; max-width: 34em; }
+  .geschichte .zitat { font-family: "Zilla Slab", serif; font-weight: 700; color: var(--tusche); font-size: 1.35rem; line-height: 1.3; margin-top: 22px; }
+  .jahre { border: var(--linie); background: var(--blatt); padding: 28px; }
+  .zahl { font-size: clamp(4rem, 10vw, 6rem); line-height: .9; color: var(--gruen); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .jahre .unter { display: block; margin-top: 8px; font-weight: 700; }
+  .jahre .muck { display: block; width: 100%; max-width: 260px; margin-top: 22px; }
+
+  /* ---------- Referenzen als Planblätter ---------- */
+  .refs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .blatt { border: var(--linie); background: var(--blatt); display: flex; flex-direction: column; }
+  .blatt .bild {
+    aspect-ratio: 4 / 3; border-bottom: var(--linie); display: grid; place-items: center; text-align: center; padding: 16px;
+    background-image: linear-gradient(var(--raster) 1px, transparent 1px), linear-gradient(90deg, var(--raster) 1px, transparent 1px); background-size: 16px 16px;
+    color: var(--grau); font-size: .9rem;
+  }
+  .blatt .bild svg { width: 56px; height: 56px; display: block; margin: 0 auto 8px; }
+  .blatt .text { padding: 16px 18px 20px; }
+  .blatt .ort { font-size: .85rem; font-weight: 700; color: var(--ziegel); }
+  .blatt h3 { margin: 2px 0 6px; font-size: 1.25rem; }
+  .blatt p { margin: 0; color: var(--grau); font-size: .98rem; }
+
+  /* ---------- Kontakt als Plankopf ---------- */
+  .plankopf { border: var(--linie); display: grid; grid-template-columns: 1.3fr 1fr 1fr; background: var(--blatt); }
+  .plankopf > div { padding: 26px; border-left: var(--linie); }
+  .plankopf > div:first-child { border-left: 0; }
+  .plankopf .feld { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grau); margin-bottom: 8px; font-weight: 700; }
+  .plankopf .gross { font-family: "Zilla Slab", serif; font-weight: 700; font-size: clamp(1.7rem, 3.5vw, 2.3rem); text-decoration: none; display: block; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .plankopf p { margin: 0 0 16px; }
+  .plankopf .klein { font-size: .95rem; color: var(--grau); margin-top: 10px; }
+  .plankopf .knopf { padding: 10px 16px; min-height: 44px; font-size: .95rem; }
+
+  footer { padding: 28px 0 36px; font-size: .85rem; color: var(--grau); }
+
+  /* ---------- Handy und Tablet ---------- */
+  @media (max-width: 920px) {
+    .hero .wrap, .geschichte .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .hero .wrap { padding-top: 40px; padding-bottom: 44px; }
+    .legende-raster { grid-template-columns: 1fr; }
+    .legende-raster li:nth-last-child(2) { border-bottom: 0; }
+    .schritte { grid-template-columns: 1fr 1fr; }
+    .schritte li:nth-child(3) { border-left: 0; }
+    .schritte li:nth-child(n+3) { border-top: var(--linie); }
+    .refs, .plankopf { grid-template-columns: 1fr; }
+    .plankopf > div { border-left: 0; border-top: var(--linie); }
+    .plankopf > div:first-child { border-top: 0; }
+    section { padding: 64px 0; }
+  }
+  @media (max-width: 520px) {
+    .marke small { display: none; }
+    .schritte { grid-template-columns: 1fr; }
+    .schritte li { border-left: 0; border-top: var(--linie); }
+    .schritte li:first-child { border-top: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="entwurf" role="note">Entwurf von Tobias · kein offizieller Auftritt</div>
+
+<header>
+  <div class="wrap">
+    <a class="marke" href="#">Willi Gartenbau<small>Altstätten · seit 1985</small></a>
+    <a class="anruf" href="tel:+41792366310">079 236 63 10</a>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" style="padding:0" aria-labelledby="titel">
+    <div class="wrap">
+      <div>
+        <h1 id="titel">Gut geplant. <span>Sauber gebaut.</span></h1>
+        <p>Vom Sitzplatz bis zur Natursteinmauer: Wir planen Ihren Garten mit Ihnen, bauen ihn mit eigenen Maschinen und pflegen ihn auf Wunsch weiter. Kein Hang ist uns zu steil.</p>
+        <div class="knoepfe">
+          <a class="knopf" href="#kontakt">Beratung vor Ort anfragen</a>
+          <a class="knopf leer" href="#leistungen">Leistungen ansehen</a>
+        </div>
+        <p class="hinweis">Lieber direkt? <a href="tel:+41792366310">079 236 63 10</a>.</p>
+      </div>
+
+      <div class="plan-rahmen">
+        <!-- Gartenplan. Jede Fläche hat data-nr = Nummer der Leistung in der Legende. -->
+        <svg class="plan" id="plan" viewBox="0 0 480 400" role="img" aria-labelledby="plan-titel">
+          <title id="plan-titel">Gezeichneter Gartenplan mit Haus, Sitzplatz, Weg, Natursteinmauer, Beet, Hecke und Bagger. Die Nummern gehören zur Legende der Leistungen.</title>
+          <defs>
+            <pattern id="schraffur" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#26332A" stroke-width="1.5"/>
+            </pattern>
+            <pattern id="platten" width="20" height="20" patternUnits="userSpaceOnUse">
+              <rect width="20" height="20" fill="#EDE7D6" stroke="#B9AF97" stroke-width="1"/>
+            </pattern>
+          </defs>
+
+          <!-- Grundstück / Rasen -->
+          <rect x="16" y="16" width="448" height="328" fill="#DDE8D3" stroke="#26332A" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Haus (keine Leistung) -->
+          <rect x="16" y="16" width="170" height="120" fill="url(#schraffur)" stroke="#26332A" stroke-width="2"/>
+          <rect x="56" y="56" width="90" height="40" fill="#F6F2E7"/>
+          <text x="101" y="81" text-anchor="middle" font-family="Zilla Slab, serif" font-size="14" fill="#26332A">Haus</text>
+
+          <!-- 1 Sitzplatz -->
+          <g class="flaeche" data-nr="1"><rect x="186" y="40" width="120" height="96" fill="url(#platten)" stroke="#26332A" stroke-width="1.5"/></g>
+          <!-- 3 Weg -->
+          <g class="flaeche" data-nr="3">
+            <path d="M90 136 C 100 210, 210 230, 250 344" fill="none" stroke="#C9BBA0" stroke-width="26"/>
+            <path d="M90 136 C 100 210, 210 230, 250 344" fill="none" stroke="#26332A" stroke-width="1" stroke-dasharray="2 6"/>
+          </g>
+          <!-- 2 Natursteinmauer am Hang -->
+          <g class="flaeche" data-nr="2">
+            <path d="M318 344 L 318 250 Q 318 226 342 226 L 464 226" fill="none" stroke="#8F8571" stroke-width="14"/>
+            <path d="M318 344 L 318 250 Q 318 226 342 226 L 464 226" fill="none" stroke="#26332A" stroke-width="1.5" stroke-dasharray="10 4"/>
+          </g>
+          <!-- 4 Beet und Bäume -->
+          <g class="flaeche" data-nr="4">
+            <path d="M30 230 Q 60 200 110 236 Q 140 260 110 300 Q 70 330 36 300 Z" fill="#A9C49A" stroke="#26332A" stroke-width="1.5"/>
+            <g fill="#7FA36F" fill-opacity=".85" stroke="#26332A" stroke-width="1.5"><circle cx="400" cy="96" r="42"/><circle cx="352" cy="172" r="26"/></g>
+            <g fill="#26332A"><circle cx="400" cy="96" r="2.5"/><circle cx="352" cy="172" r="2.5"/></g>
+          </g>
+          <!-- 5 Hecke (Unterhalt) -->
+          <g class="flaeche" data-nr="5"><rect x="186" y="18" width="276" height="10" fill="#4A7340"/></g>
+          <!-- 6 Bagger hinter der Mauer: der Menzi Muck -->
+          <g class="flaeche" data-nr="6" transform="translate(342 262)" stroke="#26332A" stroke-width="1.5" stroke-linejoin="round">
+            <path d="M8 46 L22 30 M78 46 L66 30" fill="none" stroke-width="3"/>
+            <circle cx="8" cy="50" r="7" fill="#F6F2E7"/><circle cx="80" cy="50" r="7" fill="#F6F2E7"/>
+            <rect x="20" y="18" width="50" height="14" fill="#C9A23A"/>
+            <rect x="26" y="2" width="20" height="16" fill="#F6F2E7"/>
+            <path d="M68 22 L96 4 L112 26" fill="none" stroke="#C9A23A" stroke-width="5" stroke-linecap="round"/>
+            <path d="M68 22 L96 4 L112 26" fill="none" stroke-width="1"/>
+            <path d="M106 24 L118 24 L114 36 L104 34 Z" fill="#8F8571"/>
+          </g>
+
+          <!-- Nummern (anklickbar) -->
+          <g font-family="Zilla Slab, serif" font-size="14" font-weight="700" text-anchor="middle" fill="#26332A">
+            <g class="marker" data-nr="1" tabindex="0" role="button" aria-label="Leistung 1: Sitzplätze und Vorplätze"><circle cx="246" cy="88" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="246" y="93">1</text></g>
+            <g class="marker" data-nr="2" tabindex="0" role="button" aria-label="Leistung 2: Natursteinarbeiten"><circle cx="318" cy="292" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="318" y="297">2</text></g>
+            <g class="marker" data-nr="3" tabindex="0" role="button" aria-label="Leistung 3: Wege und Umänderungen"><circle cx="190" cy="240" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="190" y="245">3</text></g>
+            <g class="marker" data-nr="4" tabindex="0" role="button" aria-label="Leistung 4: Bepflanzungen"><circle cx="72" cy="262" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="72" y="267">4</text></g>
+            <g class="marker" data-nr="5" tabindex="0" role="button" aria-label="Leistung 5: Unterhalt"><circle cx="300" cy="24" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="300" y="29">5</text></g>
+            <g class="marker" data-nr="6" tabindex="0" role="button" aria-label="Leistung 6: Bagger- und Erdarbeiten"><circle cx="450" cy="330" r="13" fill="#F6F2E7" stroke="#26332A" stroke-width="1.5"/><text x="450" y="335">6</text></g>
+          </g>
+
+          <!-- Plankopf im Plan: ersetzt jede Zusatz-Beschriftung über der Überschrift -->
+          <g font-family="Hanken Grotesk, sans-serif" fill="#26332A">
+            <rect x="16" y="356" width="448" height="34" fill="#FBF8F0" stroke="#26332A" stroke-width="1.5"/>
+            <line x1="250" y1="356" x2="250" y2="390" stroke="#26332A" stroke-width="1.5"/>
+            <line x1="370" y1="356" x2="370" y2="390" stroke="#26332A" stroke-width="1.5"/>
+            <text x="28" y="378" font-size="12" font-weight="700">WILLI GARTENBAU · ALTSTÄTTEN</text>
+            <text x="262" y="378" font-size="12">Seit 1985</text>
+            <text x="382" y="378" font-size="12">Mst. 1:200</text>
+          </g>
+          <!-- Nordpfeil -->
+          <g transform="translate(446 50)"><path d="M0 -18 L6 0 L0 -5 L-6 0 Z" fill="#26332A"/><text x="0" y="12" text-anchor="middle" font-size="10" font-family="Hanken Grotesk, sans-serif" font-weight="700" fill="#26332A">N</text></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LEISTUNGEN ===================== -->
+  <section id="leistungen" aria-labelledby="leistungen-titel">
+    <div class="wrap">
+      <h2 id="leistungen-titel">Legende: unsere Leistungen</h2>
+      <p class="einleitung">Jede Nummer gehört zu einer Stelle im Plan. Planung, Ausführung und Pflege kommen aus einer Hand – Sie haben einen Ansprechpartner vom ersten Gespräch bis zum jährlichen Heckenschnitt.</p>
+      <ol class="legende-raster" id="legende">
+        <li><button class="eintrag" data-nr="1" type="button"><span class="nr">1</span><span><h3>Sitzplätze und Vorplätze</h3><p>Naturstein, Verbundsteine, Beton oder Teer – neu, kleiner oder grösser.</p></span></button></li>
+        <li><button class="eintrag" data-nr="2" type="button"><span class="nr">2</span><span><h3>Natursteinarbeiten</h3><p>Mauern von Granit bis Sandstein, auch mit dem Greifer gesetzt.</p></span></button></li>
+        <li><button class="eintrag" data-nr="3" type="button"><span class="nr">3</span><span><h3>Wege und Umänderungen</h3><p>Bestehende Gärten neu ordnen. Oft reicht es, einen Teil umzubauen.</p></span></button></li>
+        <li><button class="eintrag" data-nr="4" type="button"><span class="nr">4</span><span><h3>Bepflanzungen</h3><p>Bäume, Sträucher und Bodendecker, passend zu Licht und Platz.</p></span></button></li>
+        <li><button class="eintrag" data-nr="5" type="button"><span class="nr">5</span><span><h3>Unterhalt</h3><p>Hecken- und Formschnitt, Rasenpflege, Baumfällen und Schädlingsbekämpfung.</p></span></button></li>
+        <li><button class="eintrag" data-nr="6" type="button"><span class="nr">6</span><span><h3>Bagger- und Erdarbeiten</h3><p>Aushub, Leitungsbau und Hausanschlüsse – mit eigenen Baggern von 1,5 bis 8,5 Tonnen.</p></span></button></li>
+      </ol>
+      <p class="legende-tipp">Tippen Sie auf eine Leistung – der Plan oben zeigt, wo sie im Garten liegt.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ABLAUF ===================== -->
+  <section class="ablauf" aria-labelledby="ablauf-titel">
+    <div class="wrap">
+      <h2 id="ablauf-titel">So entsteht Ihr Garten</h2>
+      <p class="einleitung">Vier Schritte, ein Ansprechpartner. Beratung vor Ort und Offerte sind unverbindlich.</p>
+      <ol class="schritte">
+        <li><span class="wann">Schritt 1</span><h3>Beratung vor Ort</h3><p>Wir schauen uns Ihren Garten an und hören zu, was Sie sich wünschen.</p></li>
+        <li><span class="wann">Schritt 2</span><h3>Plan und Offerte</h3><p>Sie bekommen einen klaren Vorschlag mit Steinen, Pflanzen und Preis.</p></li>
+        <li><span class="wann">Schritt 3</span><h3>Bau</h3><p>Mit eigenen Leuten und Maschinen – sauber und ordentlich.</p></li>
+        <li><span class="wann">Schritt 4</span><h3>Pflege</h3><p>Auf Wunsch kümmern wir uns danach um Hecke, Rasen und Bäume.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== GESCHICHTE ===================== -->
+  <section class="geschichte" aria-labelledby="geschichte-titel">
+    <div class="wrap">
+      <div>
+        <h2 id="geschichte-titel">Angefangen mit einem Menzi Muck</h2>
+        <p>1985 hat alles mit viel Freude, einem Menzi Muck und einem Traktor mit Anhänger angefangen. Heute bringen wir für jede Arbeit das passende Gerät mit – vom grossen Bagger bis zum Trimmer.</p>
+        <p>Geblieben ist der Anspruch, für jedes Grundstück die richtige Lösung zu finden – gemeinsam mit Ihnen.</p>
+        <p class="zitat">«Kein Hang ist uns zu steil und kein Baum zu gross.»</p>
+      </div>
+      <div class="jahre">
+        <!-- Die Zahl rechnet sich jedes Jahr selbst aus (siehe Skript unten). -->
+        <span class="zahl" id="jahre">41</span>
+        <span class="unter">Jahre Gartenbau im Rheintal</span>
+        <svg class="muck" viewBox="0 0 260 90" aria-hidden="true" stroke="#26332A" stroke-width="1.5" stroke-linejoin="round" fill="none">
+          <line x1="0" y1="80" x2="260" y2="80" stroke-dasharray="4 4"/>
+          <path d="M30 76 L60 46 M150 76 L122 46" stroke-width="4"/>
+          <circle cx="28" cy="78" r="9" fill="#F6F2E7"/><circle cx="152" cy="78" r="9" fill="#F6F2E7"/>
+          <rect x="52" y="34" width="78" height="18" fill="#C9A23A"/>
+          <rect x="62" y="10" width="30" height="24" fill="#FBF8F0"/>
+          <path d="M128 40 L182 12 L214 54" stroke="#C9A23A" stroke-width="7" stroke-linecap="round"/>
+          <path d="M128 40 L182 12 L214 54"/>
+          <path d="M206 50 L228 50 L222 70 L202 66 Z" fill="#8F8571"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REFERENZEN ===================== -->
+  <section aria-labelledby="ref-titel" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="ref-titel">Ausgeführte Gärten</h2>
+      <p class="einleitung">Drei Planblätter aus unserer Arbeit im Rheintal.</p>
+      <div class="refs">
+        <article class="blatt">
+          <div class="bild"><div><svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#545B50" stroke-width="1.5"><rect x="6" y="12" width="44" height="32"/><circle cx="20" cy="24" r="4"/><path d="M6 40 L22 30 L32 36 L40 28 L50 36"/></svg>Hier kommt Ihr Foto vom Projekt Vetsch</div></div>
+          <div class="text"><span class="ort">Blatt 1 · Altstätten</span><h3>Garten im toskanischen Stil</h3><p>Neugestaltung mit Sitzplatz, Wegen, Mauerbau, Bäumen und Rollrasen.</p></div>
+        </article>
+        <article class="blatt">
+          <div class="bild"><div><svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#545B50" stroke-width="1.5"><rect x="6" y="12" width="44" height="32"/><circle cx="20" cy="24" r="4"/><path d="M6 40 L22 30 L32 36 L40 28 L50 36"/></svg>Hier kommt Ihr Foto vom Projekt Bichsel</div></div>
+          <div class="text"><span class="ort">Blatt 2 · Au SG</span><h3>Sitzplatz mit Granitmosaik</h3><p>Neuer Sitzplatz mit Sichtschutz, Steinmauer und Gräsern.</p></div>
+        </article>
+        <article class="blatt">
+          <div class="bild"><div><svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#545B50" stroke-width="1.5"><rect x="6" y="12" width="44" height="32"/><circle cx="20" cy="24" r="4"/><path d="M6 40 L22 30 L32 36 L40 28 L50 36"/></svg>Hier kommt Ihr Foto vom Projekt Ribelhof</div></div>
+          <div class="text"><span class="ort">Blatt 3 · Ribelhof</span><h3>Neuer Eingangsbereich</h3><p>Sichtschutz aus Krustenplatten, Bepflanzung und Sandsteinmauer.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT ===================== -->
+  <section id="kontakt" style="padding-top:0" aria-labelledby="kontakt-titel">
+    <div class="wrap">
+      <h2 id="kontakt-titel">Plankopf: so erreichen Sie uns</h2>
+      <p class="einleitung">Rufen Sie an oder schreiben Sie kurz, worum es geht. Wir kommen für eine unverbindliche Beratung vorbei.</p>
+      <div class="plankopf">
+        <div>
+          <span class="feld">Telefon</span>
+          <a class="gross" href="tel:+41792366310">079 236 63 10</a>
+          <p class="klein">Sandro Willi</p>
+        </div>
+        <div>
+          <span class="feld">E-Mail</span>
+          <p><a href="mailto:sandro@gartenbau-willi.ch?subject=Anfrage%20Garten">sandro@gartenbau-willi.ch</a></p>
+          <a class="knopf leer" href="mailto:sandro@gartenbau-willi.ch?subject=Anfrage%20Garten">Anfrage schreiben</a>
+        </div>
+        <div>
+          <span class="feld">Adresse</span>
+          <p>Willi Gartenbau GmbH<br>Oberrieterstrasse 30<br>9450 Altstätten SG</p>
+          <a class="knopf leer" href="https://maps.google.com/?q=Oberrieterstrasse+30,+9450+Altst%C3%A4tten" target="_blank" rel="noopener">Route planen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Entwurf von Tobias als Vorschlag. Inhalte aus der öffentlichen Webseite der Willi Gartenbau GmbH; Platzhalter werden durch eigene Fotos ersetzt.</div></footer>
+
+<script>
+  // 1) Jahre seit 1985 automatisch ausrechnen – nie mehr veraltete Zahlen.
+  document.getElementById('jahre').textContent = new Date().getFullYear() - 1985;
+
+  // 2) Plan und Legende verbinden: Leistung wählen -> Stelle im Plan hervorheben.
+  const plan = document.getElementById('plan');
+  const eintraege = document.querySelectorAll('.eintrag');
+  const marker = plan.querySelectorAll('.marker');
+  let gewaehlt = null;
+
+  function zeige(nr) {
+    plan.classList.toggle('fokus', nr !== null);
+    plan.querySelectorAll('.flaeche, .marker').forEach(el => el.classList.toggle('aktiv', el.dataset.nr === nr));
+    eintraege.forEach(el => {
+      el.classList.toggle('aktiv', el.dataset.nr === nr);
+      el.setAttribute('aria-pressed', el.dataset.nr === nr);
+    });
+  }
+
+  // Maus darüber = Vorschau, Klick/Tippen = festhalten (nochmals tippen = lösen)
+  eintraege.forEach(el => {
+    el.addEventListener('mouseenter', () => zeige(el.dataset.nr));
+    el.addEventListener('mouseleave', () => zeige(gewaehlt));
+    el.addEventListener('click', () => {
+      gewaehlt = gewaehlt === el.dataset.nr ? null : el.dataset.nr;
+      zeige(gewaehlt);
+      // Auf dem Handy ist der Plan oben: kurz hinscrollen, wenn er nicht sichtbar ist
+      if (gewaehlt && plan.getBoundingClientRect().bottom < 0) plan.scrollIntoView({ block: 'center' });
+    });
+  });
+
+  // Klick auf eine Nummer im Plan springt zur Leistung in der Legende
+  marker.forEach(m => {
+    const geheZu = () => {
+      gewaehlt = m.dataset.nr; zeige(gewaehlt);
+      document.querySelector('.eintrag[data-nr="' + gewaehlt + '"]').scrollIntoView({ block: 'center' });
+    };
+    m.addEventListener('click', geheZu);
+    m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); geheZu(); } });
+    m.addEventListener('mouseenter', () => zeige(m.dataset.nr));
+    m.addEventListener('mouseleave', () => zeige(gewaehlt));
+  });
+</script>
+</body>
+</html>

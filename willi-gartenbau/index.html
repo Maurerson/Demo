@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Drei Entwürfe – Willi Gartenbau</title>
+<title>Entwürfe – Willi Gartenbau</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=Hanken+Grotesk:wght@300..600&family=Zilla+Slab:wght@700&display=swap" rel="stylesheet">
@@ -26,14 +26,26 @@
   .text h2 { font-size: 1.2rem; margin: 0 0 4px; }
   .text p { margin: 0 0 12px; color: #59615A; }
   .text u { text-decoration: none; font-weight: 600; }
+  .empfehlung { display: grid; grid-template-columns: 1fr 1.2fr; text-decoration: none; color: inherit; background: #fff; border: 1.5px solid #1F2620; margin-bottom: 36px; }
+  .empfehlung:hover, .empfehlung:focus-visible { outline: 2px solid #A4532F; outline-offset: 3px; }
+  .empfehlung .vorschau { height: auto; min-height: 200px; font-size: 2rem; }
+  .empfehlung .text { padding: 26px 28px; align-self: center; }
+  .tipp { display: inline-block; background: #A4532F; color: #fff; font-size: .85rem; padding: 3px 10px; margin-bottom: 10px; }
+  .weitere { font-weight: 600; margin: 0 0 14px; }
+  @media (max-width: 820px) { .empfehlung { grid-template-columns: 1fr; } }
   .fuss { margin-top: 40px; color: #59615A; font-size: .9rem; }
   @media (max-width: 820px) { .stile { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <main class="wrap">
-  <h1>Drei Ideen für eine neue Webseite der Willi Gartenbau GmbH</h1>
-  <p class="intro">Gleiche Inhalte, drei verschiedene Stile. Schauen Sie sich alle an – am besten auch auf dem Handy – und sagen Sie mir, was Ihnen gefällt. Alles lässt sich anpassen und kombinieren.</p>
+  <h1>Ein Vorschlag für die neue Webseite der Willi Gartenbau GmbH</h1>
+  <p class="intro">Mit Ihren Inhalten, am besten auch auf dem Handy ansehen. Oben meine Empfehlung, darunter drei weitere Stile zum Vergleich. Alles lässt sich anpassen und kombinieren.</p>
+  <a class="empfehlung" href="empfehlung/">
+    <div class="vorschau s3"><span>Gut geplant. Sauber gebaut.</span></div>
+    <div class="text"><b class="tipp">Meine Empfehlung</b><h2>Gartenplan – weiterentwickelt</h2><p>Stil 3, ausgearbeitet: Tippen Sie auf eine Leistung, und der Plan zeigt, wo sie im Garten liegt. Dazu Ablauf, Geschichte und Kontakt als Plankopf.</p><u>Empfehlung ansehen</u></div>
+  </a>
+  <p class="weitere">Weitere Stile zum Vergleich:</p>
   <div class="stile">
     <a class="stil" href="stil-1/">
       <div class="vorschau s1"><div>Kein Hang<br><span>zu steil.</span></div></div>
